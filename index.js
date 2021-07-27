@@ -23,8 +23,7 @@ mongoose
     const db = mongoose.connection;
     db.on("error", console.error.bind(console, "MongoDB connection error!"));
 
-    app.listen(5000);
-    console.log("Listening ..");
+    app.listen(process.env.PORT || 5000);
 
     app.set("views", "./views");
     app.set("view engine", "pug");
