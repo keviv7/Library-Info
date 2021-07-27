@@ -10,8 +10,9 @@ const app = express();
 app.use(helmet());
 app.use(compression());
 
-const mongoDB =
+const devDbUrl =
   "mongodb://keviv7:letusdeploy@cluster0-shard-00-00.6urjv.mongodb.net:27017,cluster0-shard-00-01.6urjv.mongodb.net:27017,cluster0-shard-00-02.6urjv.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-l68zlb-shard-0&authSource=admin&retryWrites=true&w=majority";
+const mongoDB = process.env.MONGODB_URI || devDbUrl;
 
 mongoose
   .connect(mongoDB, {

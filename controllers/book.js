@@ -121,7 +121,6 @@ exports.createBook = [
 
     if (errors.isEmpty()) {
       doc.save((err) => {
-        console.log(err);
         res.redirect("/catalog/books");
       });
       return;
