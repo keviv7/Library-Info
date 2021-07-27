@@ -1,0 +1,10 @@
+extend layout 
+
+block content 
+    div 
+        for book in bookList
+            ul
+                -const url="/catalog/books/"+book._id
+                li 
+                    a(href=url) #{book.title}
+                li #{book.author.fName+' '+book.author.lName} 

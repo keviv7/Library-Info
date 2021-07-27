@@ -1,0 +1,10 @@
+extend layout 
+
+block content 
+    div 
+        for author in authorList
+            ul
+                -const url="/catalog/authors/"+author._id
+                li 
+                    a(href=url) #{author.fName+" "+author.lName}
+                li #{author.country}

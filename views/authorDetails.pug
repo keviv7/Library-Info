@@ -1,0 +1,16 @@
+extend layout 
+
+block content
+    div 
+        p Author Details 
+            ul 
+                li #{author.fName+" "+author.lName}
+                
+    -updateUrl="/catalog/authors/"+author._id+"/update"
+    -deleteUrl="/catalog/authors/"+author._id+"/delete"
+
+
+    form.form-group(action=updateUrl,method="GET")
+        button.btn.btn-primary(type="submit",name="update") Update 
+    form.form-group(action=deleteUrl,method="GET")
+        button.btn.btn-danger(type="submit",name="delete") Delete

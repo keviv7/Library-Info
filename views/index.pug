@@ -1,0 +1,13 @@
+extend layout 
+
+block content
+    h1=title
+    p Welcome to the Library.
+
+    if error 
+        p Error getting the content.
+    else 
+        p The library records:
+
+    ul 
+        li #[strong Books:] !{datat}

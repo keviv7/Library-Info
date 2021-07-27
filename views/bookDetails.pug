@@ -1,0 +1,20 @@
+extend layout 
+
+block content
+    div 
+        p Book Details 
+            ul 
+                li Title: #{book.title}
+                li Author: #{book.author.fName+' '+book.author.lName}
+                ul Genres:
+                    for g in book.genre
+                        li #{g.name}
+                
+    -updateUrl="/catalog/books/"+book._id+"/update"
+    -deleteUrl="/catalog/books/"+book._id+"/delete"
+
+
+    form.form-group(action=updateUrl,method="GET")
+        button.btn.btn-primary(type="submit",name="update") Update 
+    form.form-group(action=deleteUrl,method="GET")
+        button.btn.btn-danger(type="submit",name="delete") Delete

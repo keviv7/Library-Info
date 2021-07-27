@@ -1,0 +1,20 @@
+extend layout 
+
+block content
+    h5 #{pageTitle}
+    
+    form(action=(url?url:''), method="POST")
+        div.form-group
+            label(for="fName") First Name: 
+            input#fName.form-control(type="text",name="fName",required="true",value=(author?author.fName:''))
+        
+        div.form-group
+            label(for="lName") Last Name: 
+            input#lName.form-control(type="text",name="lName",required="true",value=(author?author.lName:''))
+
+        div.form-group
+            label(for="country") Country: 
+            input#country.form-control(type="text",name="country",required="true",value=(author?author.country:''))
+
+        div.form-group
+            button#submit.btn.btn-primary(type="submit") Submit

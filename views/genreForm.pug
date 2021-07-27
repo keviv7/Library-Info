@@ -1,0 +1,16 @@
+extend layout 
+
+block content
+    h5 #{pageTitle}
+    
+    if errors 
+    form(action=(url?url:''), method="POST")
+        div.form-group
+            label(for="name") Name: 
+            input#name.form-control(type="text",name="name",value=(genre?genre.name:''))
+            if errors
+                ul 
+                    for error in errors
+                        label() #{error.msg} 
+        div.form-group
+            button#submit.btn.btn-primary(type="submit") Submit

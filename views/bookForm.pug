@@ -1,0 +1,32 @@
+extend layout 
+
+block content
+    h5 #{pageTitle}
+    
+    form(action=(url?url:''), method="POST")
+        div.form-group
+            label(for="title") Title: 
+            input#title.form-control(type="text",name="title",value=(book?book.title:''))
+        
+        div.form-group
+            label(for="author") Author: 
+            select.form-control(type='select',placeholder='Select Author',name='author',required="true")
+                for author in authorList 
+                    if book
+                        option(value=author._id,selected=(book.author._id.toString()===author._id.toString()?'selected':false)) #{author.fName+' '+author.lName}
+                    else 
+                        option(value=author._id,) #{author.fName+' '+author.lName}
+        div.form-group
+            label(for="genre") Genre:
+            for genre in genreList
+                div(style='display: inline; padding-right: 10px;')
+                    input#genre._id.checkbox-input(type='checkbox',name='genre',value=genre._id,checked=genre.checked)
+                    label(for=genre._id) #{genre.name}
+
+        div.form-group
+            button#submit.btn.btn-primary(type="submit") Submit
+
+        if errors
+            ul
+                for error in errors
+                    p #{error.msg}
