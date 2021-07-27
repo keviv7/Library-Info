@@ -20,6 +20,9 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
+    const db = mongoose.connection;
+    db.on("error", console.error.bind(console, "MongoDB connection error!"));
+
     app.listen(5000);
     console.log("Listening ..");
 
@@ -34,6 +37,3 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "MongoDB connection error!"));
